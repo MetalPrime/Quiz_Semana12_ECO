@@ -245,4 +245,27 @@ body {
   height: 100vh;
   padding: 30px;
 }
+
+.add {
+  height: 20%;
+  background-color: blueviolet;
+}
+
+.activities {
+  width: 100%;
+  background-color: bisque;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.activities section {
+  width: 33%;
+  height: 100%;
+  background-color: chartreuse;
+  border: black;
+}
 /*# sourceMappingURL=index.css.map */

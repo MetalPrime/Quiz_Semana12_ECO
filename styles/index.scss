@@ -5,3 +5,22 @@ body{
     height: 100vh;
     padding: 30px;
 }
+
+.add{
+    height: 20%;
+    background-color: blueviolet;
+}
+
+.activities{
+    width: 100%;
+    background-color: bisque;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    & section{
+        width: 33%;
+        height: 100%;
+        background-color: chartreuse;
+        border: black;
+    }
+}
