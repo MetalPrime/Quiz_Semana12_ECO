@@ -251,6 +251,27 @@ body {
   background-color: blueviolet;
 }
 
+.add__title {
+  font-size: 25px;
+  padding: 3% 20px;
+}
+
+.add form {
+  padding: 0px 20px;
+}
+
+.add__btn {
+  color: white;
+  background-color: blue;
+  border: none;
+  height: 30px;
+}
+
+.add__btn:hover {
+  -webkit-box-shadow: 2px 2px 12px #1c1c5a;
+          box-shadow: 2px 2px 12px #1c1c5a;
+}
+
 .activities {
   width: 100%;
   background-color: bisque;

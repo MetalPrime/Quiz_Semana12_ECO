@@ -9,6 +9,32 @@ body{
 .add{
     height: 20%;
     background-color: blueviolet;
+
+    &__title{
+        font-size: 25px;
+        padding: 3% 20px;
+    }
+
+    form{
+        padding: 0px 20px;
+        
+
+    }
+
+    &__input{
+
+    }
+
+    &__btn{
+        color: white;
+        background-color: blue;
+        border: none;
+        height: 30px;
+
+        &:hover{
+            box-shadow: 2px 2px 12px rgb(28, 28, 90);
+        }
+    }
 }
 
 .activities{
