@@ -1,28 +1,22 @@
 @import '_reset.scss';
 
 body{
-    background-color: aqua;
     height: 100vh;
     padding: 30px;
 }
 
 .add{
     height: 20%;
-    background-color: blueviolet;
 
     &__title{
         font-size: 25px;
-        padding: 3% 20px;
+        padding: 2% 0px;
     }
 
-    form{
-        padding: 0px 20px;
-        
-
-    }
+    
 
     &__input{
-
+        width: 30%;
     }
 
     &__btn{
@@ -39,14 +33,20 @@ body{
 
 .activities{
     width: 100%;
-    background-color: bisque;
     height: 80%;
     display: flex;
     justify-content: space-around;
     & section{
         width: 33%;
         height: 100%;
-        background-color: chartreuse;
-        border: black;
+        border:1px solid black;
+
+        p{
+            color: white;
+            padding: 15px;
+            background-color: blue;
+            text-align: center;
+            border: 1px solid black;
+        }
     }
 }
