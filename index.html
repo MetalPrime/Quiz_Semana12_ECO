@@ -25,16 +25,45 @@
     <article class="activities">
         <section class="activities__do">
             <p>To do</p>    
+            <div class="activities__listDo"></div>
         </section>
         <section class="activities__doing">
             <p>Doing</p>
+            <div class="activities__listDoing"></div>
         </section>
         <section class="activities__done">
             <p>Done</p>
+            <div class="activities__listDone"></div>
         </section>
     </article>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
 
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAJAb5xt0drUeCa2dBKMhHf3z8QMaHI2y4",
+    authDomain: "s10project.firebaseapp.com",
+    databaseURL: "https://s10project.firebaseio.com",
+    projectId: "s10project",
+    storageBucket: "s10project.appspot.com",
+    messagingSenderId: "830069995055",
+    appId: "1:830069995055:web:2affb5cd50a20f3fdbf8da",
+    measurementId: "G-04X3FB66FM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script src="script/index.js"></script>
+<script src="script/Task.js"></script>
 </body>
 
 </html>
