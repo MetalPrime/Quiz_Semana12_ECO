@@ -10,6 +10,7 @@ class Task{
     render = () => {
         let component = document.createElement('article');
         component.classList.add("task");
+        component.setAttribute('draggable',true);
 
 
         component.innerHTML = `

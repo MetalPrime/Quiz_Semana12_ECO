@@ -27,12 +27,12 @@ addBtn.addEventListener('click', function (e) {
     }
 });
 
-
-database.ref('jobs').on('value', function (elem) {
+function paintElements(elem){
     listDo.innerHTML = '';
+    listDoing.innerHTML = '';
+    listDone.innerHTML = '';
     let newTask;
     let value;
-
     elem.forEach(
         task => {
             value = task.val();
@@ -53,7 +53,11 @@ database.ref('jobs').on('value', function (elem) {
 
         }
     );
+}
 
+database.ref('jobs').on('value', function (elem) {
+
+    paintElements(elem);
 
 
     const tasks = document.querySelectorAll('.task');
@@ -94,7 +98,9 @@ database.ref('jobs').on('value', function (elem) {
             });
 
 
+
             passBtn.addEventListener('click', function () {
+
                 switch(statusTask.innerHTML){
                     case 'do':
                         database.ref('jobs/' + idTask.innerHTML).set(
@@ -104,6 +110,7 @@ database.ref('jobs').on('value', function (elem) {
                                 description: inputTask.innerHTML,
                             }
                         );
+
                         break;
                     case 'doing':
                         database.ref('jobs/' + idTask.innerHTML).set(
@@ -114,16 +121,16 @@ database.ref('jobs').on('value', function (elem) {
                             }
     
                         );
+
                         break;
                     default:
                         console.log('error in the change');
                         break;
                 }
-                window.location.reload(); 
             });
 
             returnBtn.addEventListener('click', function(e) {
-                
+
                 switch(statusTask.innerHTML){
                     case 'doing':
                         database.ref('jobs/' + idTask.innerHTML).set(
@@ -149,9 +156,53 @@ database.ref('jobs').on('value', function (elem) {
                         console.log('error in the change');
                         break;
                 }
-                window.location.reload(); 
+                
+
 
             });
+
+            /* events fired on the drop targets */
+            document.addEventListener("dragover", function(event) {
+                // prevent default to allow drop
+                event.preventDefault();
+             }, false);
+
+            document.addEventListener("drop", function(event) {
+                
+                // prevent default action (open as link for some elements)
+                event.preventDefault();
+                // move dragged elem to the selected drop target
+                console.log(event.target.className);
+                switch(event.target.className){
+                    case 'activities__do':
+                        database.ref('jobs/' + idTask.innerHTML).set(
+                            {
+                                id: idTask.innerHTML,
+                                status: 'do',
+                                description: inputTask.innerHTML,
+                            }
+                        );
+                        break;
+                    case 'activities__doing':
+                        database.ref('jobs/' + idTask.innerHTML).set(
+                            {
+                                id: idTask.innerHTML,
+                                status: 'doing',
+                                description: inputTask.innerHTML,
+                            }
+                        );
+                        break;
+                    case 'activities__done':
+                        database.ref('jobs/' + idTask.innerHTML).set(
+                            {
+                                id: idTask.innerHTML,
+                                status: 'done',
+                                description: inputTask.innerHTML,
+                            }
+                        );
+                        break;
+                }
+              }, false);
         }
     );
 
