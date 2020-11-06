@@ -284,13 +284,76 @@ body {
   width: 33%;
   height: 100%;
   border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.activities section p {
+.activities__title {
+  width: 100%;
   color: white;
   padding: 15px;
   background-color: blue;
   text-align: center;
   border: 1px solid black;
+}
+
+.task {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: burlywood;
+  border: 1px solid black;
+  width: 400px;
+  position: relative;
+}
+
+.task__delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: crimson;
+  color: white;
+  margin: 10px;
+}
+
+.task__time {
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+.task__job {
+  margin-bottom: 10px;
+}
+
+.task__id {
+  display: none;
+}
+
+.task__status {
+  display: none;
+}
+
+.task__pass {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
+  color: white;
+  background-color: steelblue;
+}
+
+.task__do .task__return {
+  display: none;
+}
+
+.task__done .task__pass {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
