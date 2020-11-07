@@ -8,6 +8,7 @@ const listDo = document.querySelector('.activities__listDo');
 const listDoing = document.querySelector('.activities__listDoing');
 const listDone = document.querySelector('.activities__listDone');
 
+var dragged;
 
 
 addBtn.addEventListener('click', function (e) {
@@ -27,7 +28,7 @@ addBtn.addEventListener('click', function (e) {
     }
 });
 
-function paintElements(elem){
+function paintElements(elem) {
     listDo.innerHTML = '';
     listDoing.innerHTML = '';
     listDone.innerHTML = '';
@@ -101,7 +102,7 @@ database.ref('jobs').on('value', function (elem) {
 
             passBtn.addEventListener('click', function () {
 
-                switch(statusTask.innerHTML){
+                switch (statusTask.innerHTML) {
                     case 'do':
                         database.ref('jobs/' + idTask.innerHTML).set(
                             {
@@ -119,7 +120,7 @@ database.ref('jobs').on('value', function (elem) {
                                 status: 'done',
                                 description: inputTask.innerHTML,
                             }
-    
+
                         );
 
                         break;
@@ -129,9 +130,9 @@ database.ref('jobs').on('value', function (elem) {
                 }
             });
 
-            returnBtn.addEventListener('click', function(e) {
+            returnBtn.addEventListener('click', function (e) {
 
-                switch(statusTask.innerHTML){
+                switch (statusTask.innerHTML) {
                     case 'doing':
                         database.ref('jobs/' + idTask.innerHTML).set(
                             {
@@ -139,7 +140,7 @@ database.ref('jobs').on('value', function (elem) {
                                 status: 'do',
                                 description: inputTask.innerHTML,
                             }
-    
+
                         );
                         break;
                     case 'done':
@@ -149,62 +150,84 @@ database.ref('jobs').on('value', function (elem) {
                                 status: 'doing',
                                 description: inputTask.innerHTML,
                             }
-    
+
                         );
                         break;
                     default:
                         console.log('error in the change');
                         break;
                 }
-                
+
+
+
+
 
 
             });
 
+            document.addEventListener("dragstart", function(event) {
+                // store a ref. on the dragged elem
+                dragged = event.target;
+                //ELEMENTO HTML SELECCIONADO
+
+              }, false);
+
             /* events fired on the drop targets */
-            document.addEventListener("dragover", function(event) {
+            document.addEventListener("dragover", function (event) {
                 // prevent default to allow drop
                 event.preventDefault();
-             }, false);
+            }, false);
 
-            document.addEventListener("drop", function(event) {
-                
+            document.addEventListener("drop", function (event) {
+                if(event.on)
+
                 // prevent default action (open as link for some elements)
                 event.preventDefault();
                 // move dragged elem to the selected drop target
                 console.log(event.target.className);
-                switch(event.target.className){
-                    case 'activities__do':
-                        database.ref('jobs/' + idTask.innerHTML).set(
-                            {
-                                id: idTask.innerHTML,
-                                status: 'do',
-                                description: inputTask.innerHTML,
-                            }
-                        );
-                        break;
-                    case 'activities__doing':
-                        database.ref('jobs/' + idTask.innerHTML).set(
-                            {
-                                id: idTask.innerHTML,
-                                status: 'doing',
-                                description: inputTask.innerHTML,
-                            }
-                        );
-                        break;
-                    case 'activities__done':
-                        database.ref('jobs/' + idTask.innerHTML).set(
-                            {
-                                id: idTask.innerHTML,
-                                status: 'done',
-                                description: inputTask.innerHTML,
-                            }
-                        );
-                        break;
+
+                if(dragged.querySelector('.task__id').innerHTML === idTask.innerHTML){
+                    switch (event.target.className) {
+                        case 'activities__do':
+    
+                            database.ref('jobs/' + task.querySelector('.task__id').innerHTML).set(
+                                {
+                                    id: task.querySelector('.task__id').innerHTML,
+                                    status: 'do',
+                                    description: task.querySelector('.task__job').innerHTML,
+                                }
+                            );
+                            break;
+                        case 'activities__doing':
+    
+                            database.ref('jobs/' + task.querySelector('.task__id').innerHTML).set(
+                                {
+                                    id: task.querySelector('.task__id').innerHTML,
+                                    status: 'doing',
+                                    description: task.querySelector('.task__job').innerHTML,
+                                }
+                            );
+                            break;
+                        case 'activities__done':
+                            database.ref('jobs/' + task.querySelector('.task__id').innerHTML).set(
+                                {
+                                    id: task.querySelector('.task__id').innerHTML,
+                                    status: 'done',
+                                    description: task.querySelector('.task__job').innerHTML,
+                                }
+                            );
+                            break;
+                    }
                 }
-              }, false);
+                
+            }, false);
+
         }
+
+
     );
+
+
 
 
 });
